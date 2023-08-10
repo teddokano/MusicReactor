@@ -11,7 +11,10 @@ As shown in the video, the LEDs and the stepper motors act flashing and switchin
 # Configuration
 The demo is configured as next picture.  
 ![demo_diagram.jpeg](https://github.com/teddokano/MusicReactor/blob/main/references/pictures/demo_diagram.jpeg)  
-_Demo system diagram_
+_Demo system diagram_  
+
+![boards.png](https://github.com/teddokano/MusicReactor/blob/main/references/pictures/boards.png)  
+_Demo system diagram_  
 
 ## Music source
 A music signal is fed from source (PC or smart phone) via 3.5mm plug. 
