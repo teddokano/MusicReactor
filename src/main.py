@@ -136,6 +136,7 @@ def main():
 	mtr		= motor( i2c )
 	
 	led_c	= PCA9955B( i2c, 0xEC >>1, iref = 0xFF )
+	led_c.bit_operation( "MODE1", 0x01, 0x00 )
 
 	
 	leds	= [ LED( led_c, i ) for i in range( led_c.CHANNELS ) ]
