@@ -6,18 +6,20 @@ The [MIMXRT1010-EVK](https://www.nxp.com/design/development-boards/i-mx-evaluati
 A brief demo [video is avairable on YouTube](https://youtu.be/X5pqsewMzrw).   
 [![Demo video](https://github.com/teddokano/MusicReactor/blob/main/references/pictures/demo_view.png)](https://youtu.be/X5pqsewMzrw)
 
-As shown in the video, the LEDs and the stepper motors act flashing and switching rotation synchronized to the misic beat.  
+As shown in the video, the LEDs and the stepper motors act flashing and switching rotation synchronized to the music beat.  
 
 # Configuration
 The demo is configured as next picture.  
-![demo_diagram.jpeg](https://github.com/teddokano/MusicReactor/blob/main/references/pictures/demo_diagram.jpeg)
+![demo_diagram.jpeg](https://github.com/teddokano/MusicReactor/blob/main/references/pictures/demo_diagram.jpeg)  
+_Demo system diagram_
+
 ## Music source
-A misic signal is fed from source (PC or smart phone) via 3.5mm plug. 
+A music signal is fed from source (PC or smart phone) via 3.5mm plug. 
 
 ## Interface board (Arduino shield)
 The signal goes into an "interface board" which is made as an Arduino shield board.  
 The interface board has two 3.5mm jack those are connected in parallel. Ether one of them can be input and other can be output for amplifier integrated speaker.  
-The interface board convert the misic signal to envelope waveform for ease of handling amplitude information in MCU. The waveform is fed to "A0" pin of MCU board. 
+The interface board convert the music signal to envelope waveform for ease of handling amplitude information in MCU. The waveform is fed to "A0" pin of MCU board. 
 
 ## MCU board
 MIMXRT1010-EVK is chosed for this demo but any MicroPython enabled MCU can be used. I chose RT1010 MCU since its lightest MicroPython supported MCU from NXP.  
@@ -71,14 +73,15 @@ The interface board can be built either simple or flexible circuit.
 #### Interface board with simple circuit
 The simple circuit board can be made very easy. It can be implemented with few passive components.  
 It just forms connect 3.5mm audio jacks in parallel, simple diode detecotr circuit. 
-The misic signal on 3.5mm jack transformed to audio amplitude waveform and fed into MCU AD-conveter input pin.  
+The music signal on 3.5mm jack transformed to audio amplitude waveform and fed into MCU AD-conveter input pin.  
 
 This circuit is recommended for first try because it's very simple. 
 However, this type is sensitive for input signal level. 
 This demo is expecting to have consumer audio line level. If it is less than expected, the demo will not react to the music. 
 User need to adjust output volume on music source device. 
 
-![simple_interface.jpg](https://github.com/teddokano/MusicReactor/blob/main/references/pictures/simple_interface.jpg)
+![simple_interface.jpg](https://github.com/teddokano/MusicReactor/blob/main/references/pictures/simple_interface.jpg)  
+_Interface board: simple circuit version_
 
 #### Interface board with flexible circuit
 Another option could be more analog processing on the interface board. 
@@ -86,7 +89,8 @@ This sample is called "flexible interface". This interface handle smaller input 
 This circuit is having 100Hz LPF and op-amp based rectifier with gain. 
 If the signal level is too big, a VR in input can be used for attenuation. 
 
-![flexible_interface.jpg](https://github.com/teddokano/MusicReactor/blob/main/references/pictures/flexible_interface.jpg)
+![flexible_interface.jpg](https://github.com/teddokano/MusicReactor/blob/main/references/pictures/flexible_interface.jpg)  
+_Interface board: flexible circuit version_
 
 ## Software
 Software setup need to be done in two steps. #1:Install MicroPython, #2:Install library and application code
@@ -111,7 +115,7 @@ _Copying MicroPython executable file into MCU by drag&drop_
 ### Step 2:Install library and application code
 After MicroPython instration, change jumper configuration and USB connection. Set J1 jumber to short 3-4 pins and connect USB cable to J9.  
 On PC, use Thonny application to copy the Python code into the MCU.  
-For details of Thonny operation, please watch [this video](https://youtu.be/KHRxZc4m0Vc) (turn-ON subtitle YouTube for English). 
+For details of Thonny operation, please watch [this video](https://youtu.be/KHRxZc4m0Vc) (turn-ON YouTube subtitle feature for English). 
 
 Everything in src directory in this repository into MCU under `flash/` folder. 
 ![py0](https://github.com/teddokano/MusicReactor/blob/main/references/pictures/py0.JPG)  
@@ -125,4 +129,21 @@ _Copying demo code and library into MCU by using Thonny_
 ### Everything is ready!
 With completing these steps, the demo is ready!  
 The demo will be running after reset or turning-ON the system :)
+
+# Tips
+### Select good music for demo :)  
+This demo is just detecting music signal amplitude. Some very old music or recent music which is heavily amplitude complessed one may not give good result. 
+It will be good idea to monitor the waveform from music source or MCU "A0" input pin which has amplitude information by oscilloscope when selecting demo source. 
+
+### Adjusting input level
+When using flexible circuit version interface board, music source output level may not need to adjust carefully. 
+Even the signal is clipped on the interface corcuit, the demo may work correctly. However, if you take signal from speaker output from power-amplifire, it may need to be adjusted.  
+The flexible version circuit has an LED to indicate "overload". Overload means the signal leel is close to satulation. If this LED is continuously kept ON, the signal may need to be attenuated. 
+
+# Reference
+- This demo had been built with ['mikan' class libraries](https://github.com/teddokano/mikan)
+- I²C LED driver ([PCA9955B](https://www.nxp.com/products/power-management/lighting-driver-and-controller-ics/led-drivers/16-channel-fm-plus-ic-bus-57-ma-20-v-constant-current-led-driver:PCA9955BTW)) 
+- I²C stepper motor controller ([PCA9629A](https://www.nxp.com/products/interfaces/ic-spi-i3c-interface-devices/ic-bus-controller-and-bridge-ics/fm-plus-ic-bus-advanced-stepper-motor-controller:PCA9629APW))
+- [MIMXRT1010-EVK](https://www.nxp.com/design/development-boards/i-mx-evaluation-and-development-boards/i-mx-rt1010-evaluation-kit:MIMXRT1010-EVK)
+- [MicroPython](https://micropython.org).  
 
