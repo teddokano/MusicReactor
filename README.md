@@ -104,6 +104,15 @@ Copy downloaded "MIMXRT1010_EVK-20230426-v1.20.0.bin" file into the "RT1010-EVK"
 After MicroPython instration, change jumper configuration and USB connection. Set J1 jumber to short 3-4 pins and connect USB cable to J9.  
 On PC, use Thonny application to copy the Python code into the MCU.  
 For details of Thonny operation, please watch [this video](https://youtu.be/KHRxZc4m0Vc) (turn-ON subtitle YouTube for English). 
+![bin0](https://github.com/teddokano/MusicReactor/blob/main/references/pictures/bin0.JPG)  
+![bin1](https://github.com/teddokano/MusicReactor/blob/main/references/pictures/bin1.JPG)
+![bin2](https://github.com/teddokano/MusicReactor/blob/main/references/pictures/bin2.JPG)
+
+![bin copy](https://github.com/teddokano/MusicReactor/blob/main/references/pictures/bin_copy.gif)
 
 Everything in src directory in this repository into MCU under `flash/` folder. 
+![py0](https://github.com/teddokano/MusicReactor/blob/main/references/pictures/py0.JPG)  
+![py1](https://github.com/teddokano/MusicReactor/blob/main/references/pictures/py1.JPG)
+![py2](https://github.com/teddokano/MusicReactor/blob/main/references/pictures/py2.JPG)
 
+![code copy](https://github.com/teddokano/MusicReactor/blob/main/references/pictures/py_copy.gif)
