@@ -14,7 +14,7 @@ The demo is configured as next picture.
 _Demo system diagram_  
 
 ![boards.png](https://github.com/teddokano/MusicReactor/blob/main/references/pictures/boards.png)  
-_Demo system diagram_  
+_Boards in the video_  
 
 ## Music source
 A music signal is fed from source (PC or smart phone) via 3.5mm plug. 
