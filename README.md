@@ -105,7 +105,7 @@ Copy downloaded "MIMXRT1010_EVK-20230426-v1.20.0.bin" file into the "RT1010-EVK"
 ![bin1](https://github.com/teddokano/MusicReactor/blob/main/references/pictures/bin1.JPG)  
 _MIMXRT1010-EVK setting for Step 1: Install MicroPython_
 
-![bin copy](https://github.com/teddokano/MusicReactor/blob/main/references/pictures/bin_copy.gif)  
+<img src="https://github.com/teddokano/MusicReactor/blob/main/references/pictures/bin_copy.gif" width="352"><br />
 _Copying MicroPython executable file into MCU by drag&drop_
 
 ### Step 2:Install library and application code
@@ -123,4 +123,6 @@ _MIMXRT1010-EVK setting for Step 2:Install library and application code_
 _Copying demo code and library into MCU by using Thonny_
 
 ### Everything is ready!
+With completing these steps, the demo is ready!  
+The demo will be running after reset or turning-ON the system :)
 
