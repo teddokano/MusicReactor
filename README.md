@@ -59,4 +59,34 @@ After the system reset, the motors go home position to align direction of the ar
 After that, the rotation is started.  
 The motor rotation direction switched by peak detection. All motor actions are synchronized by command from MCU. 
 
+# Setup
+## Hardware
+This demo requires "MIMXRT1010-EVK", "OM13483" (or "PCA9955B-ARD").  
+The stepper motor controllers are option.  
+
+### Interface board (Arduino shield type analog interface board)
+On addition to that, user need to prepare an interface board by him/her-self.  
+The interface board can be built either simple or flexible circuit. 
+
+#### Interface board with simple circuit
+The simple circuit board can be made very easy. It can be implemented with few passive components.  
+It just forms connect 3.5mm audio jacks in parallel, simple diode detecotr circuit. 
+The misic signal on 3.5mm jack transformed to audio amplitude waveform and fed into MCU AD-conveter input pin.  
+
+This circuit is recommended for first try because it's very simple. 
+However, this type is sensitive for input signal level. 
+This demo is expecting to have consumer audio line level. If it is less than expected, the demo will not react to the music. 
+User need to adjust output volume on music source device. 
+
+![simple_interface.jpg](https://github.com/teddokano/MusicReactor/blob/main/references/pictures/simple_interface.jpg)
+
+#### Interface board with flexible circuit
+Another option could be more analog processing on the interface board. 
+This sample is called "flexible interface". This interface handle smaller input signal level.  
+This circuit is having 100Hz LPF and op-amp based rectifier with gain. 
+If the signal level is too big, a VR in input can be used for attenuation. 
+
+![flexible_interface.jpg](https://github.com/teddokano/MusicReactor/blob/main/references/pictures/flexible_interface.jpg)
+## Software
+
 
