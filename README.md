@@ -87,6 +87,23 @@ This circuit is having 100Hz LPF and op-amp based rectifier with gain.
 If the signal level is too big, a VR in input can be used for attenuation. 
 
 ![flexible_interface.jpg](https://github.com/teddokano/MusicReactor/blob/main/references/pictures/flexible_interface.jpg)
-## Software
 
+## Software
+Software setup need to be done in two steps. #1:Install MicroPython, #2:Install library and application code
+
+### Step 1: Install MicroPython
+Since the MicroPython is an interpreter, its executable need to be installed into the MCU first. 
+The executable binary file can be downloaded from [download site](https://micropython.org/download/MIMXRT1010_EVK/).  
+The file can be downloaded fron [this link](https://micropython.org/resources/firmware/MIMXRT1010_EVK-20230426-v1.20.0.bin)
+
+The downloaded file need to be copied into the MCU.  
+Set the J1 jumper pin in middle position (shorting 5-6 pins) and connect USB cable to J41. When the USB cable is connected to PC, it will appear as USB storage device named "RT1010-EVK". 
+Copy downloaded "MIMXRT1010_EVK-20230426-v1.20.0.bin" file into the "RT1010-EVK" by drag&drop. 
+
+### Step 2:Install library and application code
+After MicroPython instration, change jumper configuration and USB connection. Set J1 jumber to short 3-4 pins and connect USB cable to J9.  
+On PC, use Thonny application to copy the Python code into the MCU.  
+For details of Thonny operation, please watch [this video](https://youtu.be/KHRxZc4m0Vc) (turn-ON subtitle YouTube for English). 
+
+Everything in src directory in this repository into MCU under `flash/` folder. 
 
