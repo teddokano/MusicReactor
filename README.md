@@ -98,21 +98,24 @@ The file can be downloaded fron [this link](https://micropython.org/resources/fi
 
 The downloaded file need to be copied into the MCU.  
 Set the J1 jumper pin in middle position (shorting 5-6 pins) and connect USB cable to J41. When the USB cable is connected to PC, it will appear as USB storage device named "RT1010-EVK". 
-Copy downloaded "MIMXRT1010_EVK-20230426-v1.20.0.bin" file into the "RT1010-EVK" by drag&drop. 
+Copy downloaded "MIMXRT1010_EVK-20230426-v1.20.0.bin" file into the "RT1010-EVK" by drag&drop. When the copy completed, the USB strage will be re-mounted (appear after disappear).
+
+![bin0](https://github.com/teddokano/MusicReactor/blob/main/references/pictures/bin0.JPG)  
+![bin2](https://github.com/teddokano/MusicReactor/blob/main/references/pictures/bin2.JPG)
+![bin1](https://github.com/teddokano/MusicReactor/blob/main/references/pictures/bin1.JPG)
+_MIMXRT1010-EVK setting for Step 1: Install MicroPython_
+
+![bin copy](https://github.com/teddokano/MusicReactor/blob/main/references/pictures/bin_copy.gif)
 
 ### Step 2:Install library and application code
 After MicroPython instration, change jumper configuration and USB connection. Set J1 jumber to short 3-4 pins and connect USB cable to J9.  
 On PC, use Thonny application to copy the Python code into the MCU.  
 For details of Thonny operation, please watch [this video](https://youtu.be/KHRxZc4m0Vc) (turn-ON subtitle YouTube for English). 
-![bin0](https://github.com/teddokano/MusicReactor/blob/main/references/pictures/bin0.JPG)  
-![bin1](https://github.com/teddokano/MusicReactor/blob/main/references/pictures/bin1.JPG)
-![bin2](https://github.com/teddokano/MusicReactor/blob/main/references/pictures/bin2.JPG)
-
-![bin copy](https://github.com/teddokano/MusicReactor/blob/main/references/pictures/bin_copy.gif)
 
 Everything in src directory in this repository into MCU under `flash/` folder. 
 ![py0](https://github.com/teddokano/MusicReactor/blob/main/references/pictures/py0.JPG)  
 ![py1](https://github.com/teddokano/MusicReactor/blob/main/references/pictures/py1.JPG)
 ![py2](https://github.com/teddokano/MusicReactor/blob/main/references/pictures/py2.JPG)
+_MIMXRT1010-EVK setting for Step 2:Install library and application code_
 
 ![code copy](https://github.com/teddokano/MusicReactor/blob/main/references/pictures/py_copy.gif)
