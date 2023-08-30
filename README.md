@@ -104,7 +104,7 @@ The executable binary file can be downloaded from [download site](https://microp
 The file can be downloaded from [this link](https://micropython.org/resources/firmware/MIMXRT1010_EVK-20230426-v1.20.0.bin)
 
 The downloaded file need to be copied into the MCU.  
-Set the J1 jumper pin in middle position (shorting 5-6 pins) and connect USB cable to J41. When the USB cable is connected to PC, it will appear as USB storage device named "RT1010-EVK". 
+Set the J1 jumper pin in ~~middle position (shorting 5-6 pins)~~ left most position (shorting 1-2 pins) and connect USB cable to J41. When the USB cable is connected to PC, it will appear as USB storage device named "RT1010-EVK". 
 Copy downloaded "MIMXRT1010_EVK-20230426-v1.20.0.bin" file into the "RT1010-EVK" by drag&drop. When the copy completed, the USB strage will be re-mounted (appear after disappear).
 
 ![bin0](https://github.com/teddokano/MusicReactor/blob/main/references/pictures/bin0.JPG)  
