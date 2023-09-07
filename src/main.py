@@ -20,14 +20,14 @@ class periodic_adc:
 		self.tim	= Timer( TIMER_ID )
 		self.tim.init( period = interval, mode = Timer.PERIODIC, callback = self.timer_callback )
 
-	def read( self, blocking = True ):
-		if blocking:
+	def read( self ):
+		while True:
 			while not self.timer_flag:
 				pass
 
-		self.timer_flag	= False
-				
-		return self.adc.read_u16() / self.scaling
+			self.timer_flag	= False
+					
+			yield self.adc.read_u16() / self.scaling
 
 	def timer_callback( self, _ ):
 		self.timer_flag	= True
@@ -48,10 +48,9 @@ class peak_detect( periodic_adc ):
 		
 		self.ovld	= Pin( "D7", Pin.OUT )
 
-	def detect( self, level = None ):
-		if level is None:
-			read_value	= self.read()
-			
+	def detect( self ):
+		for read_value in self.read():
+		
 			level	= read_value - self.prev_level
 			self.prev_level	= read_value
 			
@@ -67,20 +66,20 @@ class peak_detect( periodic_adc ):
 			
 			return	self.det
 		"""
-		if (self.ref_level < level) and (self.squelch < level):
-			self.last_count	= self.count
-			self.count		= 0
-			self.det		= True
-			self.ref_level	= level
+			if (self.ref_level < level) and (self.squelch < level):
+				self.last_count	= self.count
+				self.count		= 0
+				self.det		= True
+				self.ref_level	= level
+				
+				#print( self.last_count )
+			else:	
+				self.count	+= 1
+				self.det	= False
 			
-			#print( self.last_count )
-		else:	
-			self.count	+= 1
-			self.det	= False
-		
-		self.ref_level	*= self.det_lev_decay
-		
-		return self.det
+			self.ref_level	*= self.det_lev_decay
+			
+			yield self.det
 
 class motor:
 	def __init__( self, i2c ):
@@ -175,8 +174,9 @@ def main():
 	mtr.start()
 
 	vp	= 0
-	while True:
-		if peak.detect():
+	for det in peak.detect():
+		print( det )
+		if det:
 			led_c.gradation_stop( 3 )
 			led_c.gradation_start( 3, continuous = False )
 			vp	= 1.0
@@ -187,7 +187,6 @@ def main():
 		vp	*= 0.9
 		
 		vp	= 0.1 if vp < 0.1 else vp
-
 
 if __name__ == "__main__":
 	main()
