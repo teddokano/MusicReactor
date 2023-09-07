@@ -59,13 +59,13 @@ class peak_detect( periodic_adc ):
 			else:
 				self.ovld.value( 1 )
 
-		"""	
-		if self.count < self.det_ignore_interval:
-			self.count		+= 1
-			self.det		= False
-			
-			return	self.det
-		"""
+			"""	
+			if self.count < self.det_ignore_interval:
+				self.count		+= 1
+				self.det		= False
+				
+				return	self.det
+			"""
 			if (self.ref_level < level) and (self.squelch < level):
 				self.last_count	= self.count
 				self.count		= 0
@@ -175,7 +175,6 @@ def main():
 
 	vp	= 0
 	for det in peak.detect():
-		print( det )
 		if det:
 			led_c.gradation_stop( 3 )
 			led_c.gradation_start( 3, continuous = False )
